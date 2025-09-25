@@ -1,0 +1,1 @@
+# Mini Observability POC with Spring Boot, Postgres, Prometheus, Grafana, OTel\nSee docs for usage.\n
