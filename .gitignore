@@ -1,0 +1,27 @@
+# Gradle build output
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE metadata
+.idea/
+*.iml
+.vscode/
+
+# Java artifacts
+*.class
+*.jar
+*.war
+
+# Logs and temp files
+*.log
+*.swp
+.DS_Store
+
+# Docker and local env
+.env
+
+# H2 database file backups (if switching to file mode)
+*.mv.db
+*.trace.db
