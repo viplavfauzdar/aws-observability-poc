@@ -1,0 +1,56 @@
+{
+  "uid": "spring-boot-overview",
+  "title": "Spring Boot Overview",
+  "schemaVersion": 38,
+  "version": 1,
+  "panels": [
+    {
+      "title": "HTTP Requests per Second",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(http_server_requests_seconds_count[1m])) by (uri, method, status)",
+          "legendFormat": "{{method}} {{uri}} {{status}}",
+          "datasource": { "type": "prometheus", "uid": "prom" }
+        }
+      ]
+    },
+    {
+      "title": "HTTP Response Time p95 (s)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p95 latency",
+          "datasource": { "type": "prometheus", "uid": "prom" }
+        }
+      ]
+    },
+    {
+      "title": "Datasource Connections (HikariCP Active)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "expr": "hikaricp_connections_active",
+          "legendFormat": "active connections",
+          "datasource": { "type": "prometheus", "uid": "prom" }
+        }
+      ]
+    },
+    {
+      "title": "JVM Threads Live",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "targets": [
+        {
+          "expr": "jvm_threads_live_threads",
+          "legendFormat": "live threads",
+          "datasource": { "type": "prometheus", "uid": "prom" }
+        }
+      ]
+    }
+  ]
+}

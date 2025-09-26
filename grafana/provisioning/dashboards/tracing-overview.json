@@ -1,0 +1,22 @@
+{
+  "uid": "tracing-overview",
+  "title": "Tracing Overview",
+  "schemaVersion": 38,
+  "version": 1,
+  "panels": [
+    {
+      "title": "Recent Traces",
+      "type": "table",
+      "gridPos": { "h": 10, "w": 24, "x": 0, "y": 0 },
+      "options": { "showHeader": true },
+      "targets": [
+        {
+          "queryType": "search",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "tags": [],
+          "serviceName": "mini-obs-poc"
+        }
+      ]
+    }
+  ]
+}

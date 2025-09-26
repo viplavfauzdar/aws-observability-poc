@@ -1,0 +1,44 @@
+{
+  "uid": "jvm-metrics",
+  "title": "JVM Metrics",
+  "schemaVersion": 38,
+  "version": 1,
+  "panels": [
+    {
+      "title": "Heap Memory Used (bytes)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "jvm_memory_used_bytes{area=\"heap\"}",
+          "legendFormat": "used",
+          "datasource": { "type": "prometheus", "uid": "prom" }
+        }
+      ]
+    },
+    {
+      "title": "Non-Heap Memory Used (bytes)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "jvm_memory_used_bytes{area=\"nonheap\"}",
+          "legendFormat": "non-heap used",
+          "datasource": { "type": "prometheus", "uid": "prom" }
+        }
+      ]
+    },
+    {
+      "title": "GC Pause Time",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "expr": "rate(jvm_gc_pause_seconds_sum[5m])",
+          "legendFormat": "gc pause",
+          "datasource": { "type": "prometheus", "uid": "prom" }
+        }
+      ]
+    }
+  ]
+}
